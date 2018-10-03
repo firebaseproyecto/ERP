@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Listado Detallado</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item class="text" *ngFor="let item of (items | async)">
+  		<h2>{{item.nombre}} {{item.apellido}}</h2>
+   	
+   		<p>{{item.dni}}</p>
+   		<p>{{item.departamento}}</p>
+   		<p>{{item.usarname}}</p>
+   		<p>{{item.password}}</p>
+		</ion-item>
+</ion-list>
+  <div class="boton" >
+    <button ion-button color="secondary" large clear item-right (click)="doPrompt()">
+    <ion-icon name="add-circle"></ion-icon>
+    </button>
+    </div>
+</ion-content>

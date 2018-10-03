@@ -1,0 +1,17 @@
+page-home {
+
+	.Logo{
+		margin-top:50%;
+	}
+
+	.spinner{
+		margin-left:25%;
+	}
+
+	ion-spinner * {
+	  width: 28px;
+	  height: 28px;
+	  stroke: #444;
+	  fill: #222;
+	}
+}
