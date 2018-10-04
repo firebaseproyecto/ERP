@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams  } from 'ionic-angular';
 import { ListadoPage } from '../listado/listado';
+import { MenuController } from 'ionic-angular';
 
 //FIREBASE 
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs/Observable';
 //FIREBASE FIN
 
 /**
@@ -12,6 +14,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+ 
+
 
 @IonicPage()//
 @Component({
@@ -20,12 +24,12 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class DepartamentosPage {
 
-  	 items: Observable<any[]>;
+  	items: Observable<any[]>;
      
 
-	  constructor(public navCtrl: NavController, afDB: AngularFireDatabase) {
-	    this.items = afDB.list('departamentos').valueChanges();
-     
+	  constructor(public navCtrl: NavController, afDB: AngularFireDatabase, public menu: MenuController) {
+	    this.menu.enable(true);
+      this.items = afDB.list('departamentos').valueChanges();
 	  }
 
   ionViewDidLoad() {

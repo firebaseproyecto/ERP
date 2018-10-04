@@ -15,21 +15,25 @@ import { Observable } from 'rxjs/Observable';
 export class ListadodetalladoPage {
 
 items: Observable<any[]>;
+
   arrData = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   	private afDB: AngularFireDatabase, public alertCtrl: AlertController) {
 
-  	this.afDB.list("usuarios").valueChanges().subscribe(_data =>{
+  	this.afDB.list('usuarios').valueChanges().subscribe(_data =>{
           this.arrData = _data;
           console.log(_data);
       })
   }
 
+
+
   doPrompt() {
 
     let prompt = this.alertCtrl.create({
       title: 'Nuevo Usuario',
+      enableBackdropDismiss : false,
       inputs: [
         {
           name: 'nombre',
@@ -44,7 +48,7 @@ items: Observable<any[]>;
           placeholder: 'DNI'
         },
         {
-          name: 'codUsu',
+          name: 'cod_usu',
           placeholder: 'Cod usu'
         },
         {
@@ -71,14 +75,42 @@ items: Observable<any[]>;
           text: 'Nuevo Registro',
           handler: data => {
             console.log('Saved clicked');
-            console.log(data.nombre);
-            console.log(data.apellido);
-			console.log(data.dni);
-            console.log(data.codUsu);
-            console.log(data.departamento);
-            console.log(data.username);
-            console.log(data.password);
-            this.afDB.list("/usuarios/").push(this._data);
+            console.log(JSON.stringify(data));
+            var usuarionuevo = {nombre:data.nombre, apellido:data.apellido, dni:data.dni, cod_usu:data.codUsu, departamento:data.departamento,
+            					username:data.username, password:data.password}
+            
+            console.log(usuarionuevo);
+            if(data.nombre.includes(" ") || data.apellido.includes(" ") ||
+            	data.dni.includes(" ") || data.cod_usu.includes(" ") ||
+            	data.departamento.includes(" ") || data.username.includes(" ") || data.password.includes(" "))
+            {
+
+				console.log("ESPACIO DETECTADO");
+				let alert = this.alertCtrl.create({
+			      title: 'Error',
+			      message: 'No metas espacios, por favor.',
+			      buttons: ['Ok']
+			    });
+			    alert.present(); 
+            }
+
+            else if(data.nombre != null && data.apellido != null &&
+            	data.dni != null && data.cod_usu != null &&
+            	data.departamento != null && data.username != null && data.password != null)
+            {
+            	console.log("FALTAN DATOS");
+				let alert = this.alertCtrl.create({
+			      title: 'Error',
+			      message: 'Rellena todos los campos, por favor.',
+			      buttons: ['Ok']
+			    });
+			    alert.present(); 
+            }
+
+
+            else{
+            	 //this.afDB.list("/usuarios/").push(usuarionuevo);
+            }
           }
         }
       ]

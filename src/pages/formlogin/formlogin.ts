@@ -1,25 +1,43 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the FormloginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DatosProvider } from '../../providers/datos/datos';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs/Observable';
 
-@IonicPage()
 @Component({
-  selector: 'page-formlogin',
+
   templateUrl: 'formlogin.html',
+
 })
+
 export class FormloginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: Observable<any[]>;
+  arrData = [];
+  user = {};
+  logForm() {
+  console.log(this.user)
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  	private afDB: AngularFireDatabase, public alertCtrl: AlertController, public serDatos: DatosProvider) {
+
+  	this.afDB.list("usuarios").valueChanges().subscribe(_data =>{
+          this.arrData = _data;
+          console.log(_data);
+      })
+
+
+    console.log('serDatos_usuarioactual', serDatos.usuario_actual);
+        //nombre =  this.serDatos.usuario_actual.nombre;
+    
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormloginPage');
+    console.log('ionViewDidLoad ListadoPage');
   }
 
 }
