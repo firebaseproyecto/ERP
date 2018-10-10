@@ -97,23 +97,23 @@ var ListadoPage = /** @class */ (function () {
                             data.dni.includes(" ") || data.cod_usu.includes(" ") ||
                             data.departamento.includes(" ") || data.username.includes(" ") || data.password.includes(" ")) {
                             console.log("ESPACIO DETECTADO");
-                            var alert = _this.alertCtrl.create({
+                            var alert_1 = _this.alertCtrl.create({
                                 title: 'Error',
                                 message: 'No metas espacios, por favor.',
                                 buttons: ['Ok']
                             });
-                            alert.present();
+                            alert_1.present();
                         }
                         else if (data.nombre == null || data.apellido == null ||
                             data.dni == null || data.cod_usu == null ||
                             data.departamento == null || data.username == null || data.password == null) {
                             console.log("FALTAN DATOS");
-                            var alert = _this.alertCtrl.create({
+                            var alert_2 = _this.alertCtrl.create({
                                 title: 'Error',
                                 message: 'Rellena todos los campos, por favor.',
                                 buttons: ['Ok']
                             });
-                            alert.present();
+                            alert_2.present();
                         }
                         else {
                             //this.afDB.list("/usuarios/").push(usuarionuevo);
@@ -129,12 +129,12 @@ var ListadoPage = /** @class */ (function () {
     };
     ListadoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-listado',template:/*ion-inline-start:"F:\ionic\ERP\src\pages\listado\listado.html"*/'<ion-header>\n\n  <ion-navbar>\n  	<ion-buttons end>\n  	<button ion-button menuToggle>\n  		<ion-icon name ="menu"></ion-icon>\n  	</button>\n  	</ion-buttons>\n    <ion-title>listado</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n 	<ion-list>\n		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListado(item)">\n			{{item.nombre}}\n		</ion-item>\n	</ion-list>\n  <div class="boton" >\n    <button ion-button color="secondary" large clear item-right (click)="doPrompt()">\n    <ion-icon name="add-circle"></ion-icon>\n    </button>\n   </div>\n</ion-content>\n'/*ion-inline-end:"F:\ionic\ERP\src\pages\listado\listado.html"*/,
+            selector: 'page-listado',template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\listado\listado.html"*/'<ion-header>\n\n  <ion-navbar>\n  	<ion-buttons end>\n  	<button ion-button menuToggle>\n  		<ion-icon name ="menu"></ion-icon>\n  	</button>\n  	</ion-buttons>\n    <ion-title>listado</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n 	<ion-list>\n		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListado(item)">\n			{{item.nombre}}\n		</ion-item>\n	</ion-list>\n  <div class="boton" >\n    <button ion-button color="secondary" large clear item-right (click)="doPrompt()">\n    <ion-icon name="add-circle"></ion-icon>\n    </button>\n   </div>\n</ion-content>\n'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\listado\listado.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], ListadoPage);
     return ListadoPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=listado.js.map
@@ -206,12 +206,12 @@ var LoginPage = /** @class */ (function () {
         for (var i = 0; i < this.arrData.length; i++) {
             console.log(this.user.username, this.arrData[i].username, this.user.pwd, this.arrData[i].password);
             if (this.user.username == this.arrData[i].username && this.user.pwd == this.arrData[i].password) {
-                var alert_1 = this.alertCtrl.create({
+                var alert = this.alertCtrl.create({
                     title: 'Datos correctos',
                     subTitle: 'Bienvenido.',
                     buttons: ['OK']
                 });
-                alert_1.present();
+                alert.present();
                 /*this.usuario_actual =[{apellido: this.arrData[i].apellido,
                                       cod_usu: this.arrData[i].cod_usu,
                                       departamento: this.arrData[i].departamento,
@@ -235,23 +235,22 @@ var LoginPage = /** @class */ (function () {
         }
         //
         if (!blnencontrado) {
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Datos incorrectos',
                 subTitle: 'Los datos ingresados son incorrectos.',
                 buttons: ['OK']
             });
-            alert_2.present();
+            alert.present();
         }
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"F:\ionic\ERP\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<form (ngSubmit)="logForm()">\n		<div class= "formulario">\n			<ion-list inset >\n					<div>\n					  <ion-item>\n					    <ion-label>Username</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					<br/>\n					  <ion-item>\n					    <ion-label>Password</ion-label>\n					    <ion-input type="password" [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					</div>\n				  <br/>\n				<div class="boton"> \n					<button ion-button clear item-end (click)="AbrirDepartamentos(user)" type="submit">Login</button>\n				</div>\n			</ion-list>\n		</div>\n	</form>\n</ion-content>\n'/*ion-inline-end:"F:\ionic\ERP\src\pages\login\login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<form (ngSubmit)="logForm()">\n		<div class= "formulario">\n			<ion-list inset >\n					<div>\n					  <ion-item>\n					    <ion-label>Username</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					<br/>\n					  <ion-item>\n					    <ion-label>Password</ion-label>\n					    <ion-input type="password" [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					</div>\n				  <br/>\n				<div class="boton"> \n					<button ion-button clear item-end (click)="AbrirDepartamentos(user)" type="submit">Login</button>\n				</div>\n			</ion-list>\n		</div>\n	</form>\n</ion-content>\n'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_datos_datos__["a" /* DatosProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_datos_datos__["a" /* DatosProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_datos_datos__["a" /* DatosProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _g || Object])
     ], LoginPage);
     return LoginPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=login.js.map
@@ -288,11 +287,11 @@ var map = {
 		2
 	],
 	"../pages/login/login.module": [
-		505,
+		506,
 		1
 	],
 	"../pages/menulateral/menulateral.module": [
-		506,
+		505,
 		0
 	]
 };
@@ -370,7 +369,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"F:\ionic\ERP\src\pages\home\home.html"*/'\n<ion-content>\n\n\n  <div class="Logo">\n    <img src="../../assets/imgs/logoERP.png" />\n  </div>\n\n  <div class="spinner">\n    <ion-spinner name="bubbles"></ion-spinner>\n  </div>\n\n <button ion-button clear item-end (click)="AbrirPaginaLogin()">Login</button>\n</ion-content>'/*ion-inline-end:"F:\ionic\ERP\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\home\home.html"*/'\n<ion-content>\n\n\n  <div class="Logo">\n    <img src="../../assets/imgs/logoERP.png" />\n  </div>\n\n  <div class="spinner">\n    <ion-spinner name="bubbles"></ion-spinner>\n  </div>\n\n <button ion-button clear item-end (click)="AbrirPaginaLogin()">Login</button>\n</ion-content>'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_datos_datos__["a" /* DatosProvider */]])
@@ -429,7 +428,7 @@ var FormloginPage = /** @class */ (function () {
         console.log('ionViewDidLoad ListadoPage');
     };
     FormloginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\ionic\ERP\src\pages\formlogin\formlogin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>FormLogin</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<form (ngSubmit)="logForm()">\n		<div class= "formulario">\n			<ion-list inset >\n					<div>\n					  <ion-item>\n					    <ion-label>Nombre</ion-label>\n					    <ion-input type="text"  value={{nombre}} [(ngModel)]="user.nombre" name="nombre" [ngModelOptions]="{standalone: true}"></ion-input> \n					  </ion-item>\n					<br/>\n					  <ion-item>\n					    <ion-label>Apellido</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.apellido" name="apellido" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>DNI</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.dni" name="dni" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>Departamento</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.departamento" name="departamento" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>Usuario</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n						<ion-item>\n					    <ion-label>Contraseña</ion-label>\n					    <ion-input type="password" [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					</div>\n				  <br/>\n				<div class="boton"> \n					<button ion-button clear item-end (click)="Editar(user)" type="submit">Editar</button>\n				</div>\n			</ion-list>\n		</div>\n	</form>\n</ion-content>'/*ion-inline-end:"F:\ionic\ERP\src\pages\formlogin\formlogin.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\formlogin\formlogin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>FormLogin</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<!--dffffffffffffffffff-->\n<ion-content padding>\n<form (ngSubmit)="logForm()">\n		<div class= "formulario">\n			<ion-list inset >\n					<div>\n					  <ion-item>\n					    <ion-label>Nombre</ion-label>\n					    <ion-input type="text"  value={{nombre}} [(ngModel)]="user.nombre" name="nombre" [ngModelOptions]="{standalone: true}"></ion-input> \n					  </ion-item>\n					<br/>\n					  <ion-item>\n					    <ion-label>Apellido</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.apellido" name="apellido" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>DNI</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.dni" name="dni" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>Departamento</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.departamento" name="departamento" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n					  <ion-item>\n					    <ion-label>Usuario</ion-label>\n					    <ion-input type="text" [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n\n						<ion-item>\n					    <ion-label>Contraseña</ion-label>\n					    <ion-input type="password" [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>\n					  </ion-item>\n					</div>\n				  <br/>\n				<div class="boton"> \n					<button ion-button clear item-end (click)="Editar(user)" type="submit">Editar</button>\n				</div>\n			</ion-list>\n		</div>\n	</form>\n</ion-content>'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\formlogin\formlogin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_datos_datos__["a" /* DatosProvider */]])
@@ -531,8 +530,8 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/departamentos/departamentos.module#DepartamentosPageModule', name: 'DepartamentosPage', segment: 'departamentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/listado/listado.module#ListadoPageModule', name: 'ListadoPage', segment: 'listado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menulateral/menulateral.module#MenulateralPageModule', name: 'MenulateralPage', segment: 'menulateral', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/menulateral/menulateral.module#MenulateralPageModule', name: 'MenulateralPage', segment: 'menulateral', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_16__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
@@ -656,7 +655,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\ionic\ERP\src\app\app.html"*/'<ion-menu [content]="content" side="right" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"F:\ionic\ERP\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\app\app.html"*/'<ion-menu [content]="content" side="right" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], MyApp);
@@ -786,7 +785,7 @@ var ListadodetalladoPage = /** @class */ (function () {
         console.log('ionViewDidLoad ListadoPage');
     };
     ListadodetalladoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\ionic\ERP\src\pages\listadodetallado\listadodetallado.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Listado Detallado</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n<ion-list>\n  <ion-item class="text" *ngFor="let item of (items | async)">\n  		<h2>{{item.nombre}} {{item.apellido}}</h2>\n   	\n   		<p>{{item.dni}}</p>\n   		<p>{{item.departamento}}</p>\n   		<p>{{item.usarname}}</p>\n   		<p>{{item.password}}</p>\n		</ion-item>\n</ion-list>\n  <div class="boton" >\n    <button ion-button color="secondary" large clear item-right (click)="doPrompt()">\n    <ion-icon name="add-circle"></ion-icon>\n    </button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"F:\ionic\ERP\src\pages\listadodetallado\listadodetallado.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\listadodetallado\listadodetallado.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Listado Detallado</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n<ion-list>\n  <ion-item class="text" *ngFor="let item of (items | async)">\n  		<h2>{{item.nombre}} {{item.apellido}}</h2>\n   	\n   		<p>{{item.dni}}</p>\n   		<p>{{item.departamento}}</p>\n   		<p>{{item.usarname}}</p>\n   		<p>{{item.password}}</p>\n		</ion-item>\n</ion-list>\n  <div class="boton" >\n    <button ion-button color="secondary" large clear item-right (click)="doPrompt()">\n    <ion-icon name="add-circle"></ion-icon>\n    </button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\listadodetallado\listadodetallado.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
@@ -883,7 +882,7 @@ var DepartamentosPage = /** @class */ (function () {
     };
     DepartamentosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-departamentos',template:/*ion-inline-start:"F:\ionic\ERP\src\pages\departamentos\departamentos.html"*/'<!--\n  Generated template for the DepartamentosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar hideBackButton>\n  	<ion-buttons end>\n  	<button ion-button menuToggle>\n  		<ion-icon name ="menu"></ion-icon>\n  	</button>\n  	</ion-buttons>\n    <ion-title>Departamentos</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n 	<ion-list>\n		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListado(item)">\n			{{item.nombre}}\n		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"F:\ionic\ERP\src\pages\departamentos\departamentos.html"*/,
+            selector: 'page-departamentos',template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\departamentos\departamentos.html"*/'<!--\n  Generated template for the DepartamentosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar hideBackButton>\n  	<ion-buttons end>\n  	<button ion-button menuToggle>\n  		<ion-icon name ="menu"></ion-icon>\n  	</button>\n  	</ion-buttons>\n    <ion-title>Departamentos</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n 	<ion-list>\n		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListado(item)">\n			{{item.nombre}}\n		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\departamentos\departamentos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */]])
     ], DepartamentosPage);

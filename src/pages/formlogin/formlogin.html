@@ -6,46 +6,53 @@
 
 </ion-header>
 
-<!--dffffffffffffffffff-->
+
 <ion-content padding>
-<form (ngSubmit)="logForm()">
+<form (ngSubmit)="logForm()" >
 		<div class= "formulario">
 			<ion-list inset >
 					<div>
 					  <ion-item>
 					    <ion-label>Nombre</ion-label>
-					    <ion-input type="text"  value={{nombre}} [(ngModel)]="user.nombre" name="nombre" [ngModelOptions]="{standalone: true}"></ion-input> 
+					    <ion-input type="text" [disabled]="isDisabled"  value={{nombre}} [(ngModel)]="user.nombre" name="nombre" [ngModelOptions]="{standalone: true}"></ion-input> 
 					  </ion-item>
 					<br/>
 					  <ion-item>
 					    <ion-label>Apellido</ion-label>
-					    <ion-input type="text" [(ngModel)]="user.apellido" name="apellido" [ngModelOptions]="{standalone: true}"></ion-input>
+					    <ion-input type="text" [disabled]="isDisabled" value = {{apellido}} [(ngModel)]="user.apellido" name="apellido" [ngModelOptions]="{standalone: true}"></ion-input>
 					  </ion-item>
 
 					  <ion-item>
 					    <ion-label>DNI</ion-label>
-					    <ion-input type="text" [(ngModel)]="user.dni" name="dni" [ngModelOptions]="{standalone: true}"></ion-input>
+					    <ion-input type="text" [disabled]="isDisabled" value= {{dni}} [(ngModel)]="user.dni" name="dni" [ngModelOptions]="{standalone: true}"></ion-input>
 					  </ion-item>
 
 					  <ion-item>
 					    <ion-label>Departamento</ion-label>
-					    <ion-input type="text" [(ngModel)]="user.departamento" name="departamento" [ngModelOptions]="{standalone: true}"></ion-input>
+					    <ion-input type="text" [disabled]="isDisabled" value = {{departamento}} [(ngModel)]="user.departamento" name="departamento" [ngModelOptions]="{standalone: true}"></ion-input>
 					  </ion-item>
 
 					  <ion-item>
 					    <ion-label>Usuario</ion-label>
-					    <ion-input type="text" [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>
+					    <ion-input type="text" [disabled]="isDisabled" value = {{username}} [(ngModel)]="user.username" name="username" [ngModelOptions]="{standalone: true}"></ion-input>
 					  </ion-item>
 
 						<ion-item>
 					    <ion-label>Contraseña</ion-label>
-					    <ion-input type="password" [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>
+					    <ion-input type="password" [disabled]="isDisabled" value = {{password}} [(ngModel)]="user.pwd" name="pwd" [ngModelOptions]="{standalone: true}"></ion-input>
 					  </ion-item>
 					</div>
 				  <br/>
-				<div class="boton"> 
-					<button ion-button clear item-end (click)="Editar(user)" type="submit">Editar</button>
+				<div class="boton" *ngIf="isDisabled"> 
+					<button ion-button clear item-end (click)="Editar()" type="submit">Editar</button>
 				</div>
+
+				<div class="botones" *ngIf="!isDisabled"> 
+					<button ion-button clear item-end (click)="Cancelar()">Cancelar</button>
+					<button ion-button clear item-end (click)="ComprobarDatos(user)" type="submit">Guardar</button>
+				</div>
+
+
 			</ion-list>
 		</div>
 	</form>

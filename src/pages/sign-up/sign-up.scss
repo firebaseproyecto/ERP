@@ -1,0 +1,24 @@
+.ColorHeader{
+	background-color:#000000;
+}
+
+.CentrarHome{
+	display: table !important;
+	width: 100% !important;
+	height: 100% !important;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	margin-top: 50%;
+}
+
+.ColorFondo{
+	/*background-color: #4581D1;*/
+	background-image: url(../../assets/imgs/prueba.jpg);
+	display:block;
+	margin:auto;
+}
+
+.QuitarColor{
+	opacity: 0.5; 
+}

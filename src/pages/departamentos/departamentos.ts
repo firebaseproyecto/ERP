@@ -25,7 +25,7 @@ import { Observable } from 'rxjs/Observable';
 export class DepartamentosPage {
 
   	items: Observable<any[]>;
-     
+    opcion="departamentos";
 
 	  constructor(public navCtrl: NavController, afDB: AngularFireDatabase, public menu: MenuController) {
 	    this.menu.enable(true);
@@ -37,6 +37,8 @@ export class DepartamentosPage {
   }
 
     abrirListado(item){
+    console.log("DE o - "+this.opcion);
+    console.log("DE i - "+item);
     this.navCtrl.push(ListadoPage,{item:item.nombre});
   }
 

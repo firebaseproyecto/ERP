@@ -13,6 +13,7 @@ import { FormloginPage } from '../pages/formlogin/formlogin';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;

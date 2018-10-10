@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 506:
+/***/ 505:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72,7 +72,7 @@ var MenulateralPage = /** @class */ (function () {
     };
     MenulateralPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-menulateral',template:/*ion-inline-start:"F:\ionic\ERP\src\pages\menulateral\menulateral.html"*/'<ion-menu [content]="content" slide="right">\n	<ion-header>\n		<ion-header>\n			<ion-toolbar>\n				<ion-title>Menu</ion-title>\n			</ion-toolbar>\n		</ion-header>\n	</ion-header>\n\n\n  <ion-content>	\n    <h4>ssssss</h4>\n  </ion-content>\n</ion-menu>\n\n\n\n<ion-nav [root]="rooPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"F:\ionic\ERP\src\pages\menulateral\menulateral.html"*/,
+            selector: 'page-menulateral',template:/*ion-inline-start:"F:\GitHubFirebaseProyecto\ERP\src\pages\menulateral\menulateral.html"*/'<ion-menu [content]="content" slide="right">\n	<ion-header>\n		<ion-header>\n			<ion-toolbar>\n				<ion-title>Menu</ion-title>\n			</ion-toolbar>\n		</ion-header>\n	</ion-header>\n\n\n  <ion-content>	\n    <h4>ssssss</h4>\n  </ion-content>\n</ion-menu>\n\n\n\n<ion-nav [root]="rooPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"F:\GitHubFirebaseProyecto\ERP\src\pages\menulateral\menulateral.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], MenulateralPage);

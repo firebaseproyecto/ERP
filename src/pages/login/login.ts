@@ -25,6 +25,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
 	arrData = [];
+  llave = [];
   //usuario_actual: any;
 	user = {};
   logForm() {
@@ -40,7 +41,13 @@ export class LoginPage {
   		this.afDB.list("usuarios").valueChanges().subscribe(_data =>{
         this.arrData = _data;
         console.log(this.arrData);
-      	})
+      	});
+
+      this.afDB.list("usuarios").snapshotChanges().subscribe(_data =>{
+      this.llave = _data;
+      console.log(this.llave);
+
+    });
   }
  
   ionViewDidLoad() {
@@ -68,7 +75,7 @@ export class LoginPage {
                                   password: this.arrData[i].password,
                                   username: this.arrData[i].username}
             ]*/
-            this.serDatos.usuario_actual.push({apellido: this.arrData[i].apellido,
+            this.serDatos.usuario_actual.push({ apellido: this.arrData[i].apellido,
                                   cod_usu: this.arrData[i].cod_usu,
                                   departamento: this.arrData[i].departamento, 
                                   dni: this.arrData[i].dni,

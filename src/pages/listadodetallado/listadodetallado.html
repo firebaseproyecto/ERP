@@ -9,14 +9,9 @@
 <ion-content padding>
 
 <ion-list>
-  <ion-item class="text" *ngFor="let item of (items | async)">
-  		<h2>{{item.nombre}} {{item.apellido}}</h2>
-   	
-   		<p>{{item.dni}}</p>
-   		<p>{{item.departamento}}</p>
-   		<p>{{item.usarname}}</p>
-   		<p>{{item.password}}</p>
-		</ion-item>
+    <ion-item class="text" *ngFor="let item of items | async" (click)="abrirListadoDetallado(item)">
+      {{item.nombre}}
+    </ion-item>
 </ion-list>
   <div class="boton" >
     <button ion-button color="secondary" large clear item-right (click)="doPrompt()">

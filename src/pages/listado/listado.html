@@ -14,11 +14,15 @@
 
 <ion-content>
  	<ion-list>
-		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListado(item)">
-			{{item.nombre}}
+		<ion-item class="text" *ngFor="let item of items | async" (click)="abrirListadoDetallado(item)">
+			{{item.nombre}} 
+      <!--<button ion-button color="secondary" large clear item-right (click)="borrar()">
+        <ion-icon  ios="ios-trash" md="md-trash"></ion-icon>
+      </button>-->
 		</ion-item>
+
 	</ion-list>
-  <div class="boton" >
+  <div class="boton" *ngIf="boton">
     <button ion-button color="secondary" large clear item-right (click)="doPrompt()">
     <ion-icon name="add-circle"></ion-icon>
     </button>

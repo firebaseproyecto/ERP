@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { DatosProvider } from '../providers/datos/datos';
 import { IonicStorageModule } from '@ionic/storage';
 
+
 export const firebaseConfig = {
     apiKey: "AIzaSyDTubo4XxDbY2bKMVOTEs6p8Erf1EP8kyQ",
     authDomain: "erp-crm-0000.firebaseapp.com",
@@ -45,8 +46,7 @@ export const firebaseConfig = {
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

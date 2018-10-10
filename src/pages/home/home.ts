@@ -17,34 +17,10 @@ export class HomePage {
   //serDatos.remove(usuario_actual);
 	this.menu.enable(false);
 
-	    /*const loader = this.loadingCtrl.create({
-	      content: "Please wait...",
-	      duration: 3000
-	    });
-	    loader.present();*/
-	    //this.contador = setTimeout(()=>{this.AbrirPaginaLogin(),3000})
-	     
-	    
-	 /* let loading = this.loadingCtrl.create({
-    content: 'Please wait...'
-  });
+    serDatos.usuario_actual.length = 0;
 
-  loading.present();
-
-  setTimeout(() => {
-    loading.dismiss();
-  }, 5000);
-
-   
-  }
-  Add(){
-  	this.navCtrl.push(LoginPage);
-  } */
 
 }
-
-
-  
 
 
   AbrirPaginaLogin(){

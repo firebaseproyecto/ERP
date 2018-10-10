@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
 
   templateUrl: 'listadodetallado.html',
@@ -16,110 +17,184 @@ export class ListadodetalladoPage {
 
 items: Observable<any[]>;
 
-  arrData = [];
+  //arrData = [];
+  opcion="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   	private afDB: AngularFireDatabase, public alertCtrl: AlertController) {
-
-  	this.afDB.list('usuarios').valueChanges().subscribe(_data =>{
-          this.arrData = _data;
-          console.log(_data);
-      })
-  }
-
+     this.opcion=navParams.get('item');
+      console.log(this.opcion);
+      /*this.menu.e
+      nable(true);*/
+      this.opcion=this.opcion.toLowerCase();
+      this.items = afDB.list(this.opcion).valueChanges();
+      console.log("ESTOY - "+this.opcion);
+	
+    }
+  
 
 
   doPrompt() {
+    console.log("Form : "+this.opcion);
+    switch(this.opcion){
+      case "proyecto":
+       let prompt = this.alertCtrl.create({
+          title: 'Nuevo Proyecto',
+          enableBackdropDismiss : false,
+          inputs: [
+            {name: 'codigo',placeholder: 'Codigo'},
+            {name: 'nombre',placeholder: 'Nombre'},
+            {name: 'gastos',placeholder: 'Gastos'},
+            {name: 'presupuesto',placeholder: 'presupuesto'},
+            {name: 'plataforma',placeholder: 'plataforma'},
+            {name: 'fechaInicio',placeholder: 'Fecha inicio'},
+            {name: 'fechaFin',placeholder: 'Fecha fin'},
+            {name: 'fechaMaxima',placeholder: 'Fecha maxima'},
+          ],
+          buttons: [
+            {
+              text: 'Cancelar',
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: 'Nuevo Registro',
+              handler: data => {
+                console.log('Saved clicked');
+                console.log(JSON.stringify(data));
+                var proyectonuevo = {
+                  codigo:data.codigo, 
+                  nombre:data.nombre, 
+                  gastos:data.gastos, 
+                  presupuesto:data.presupuesto, 
+                  fechaInicio:data.fechaInicio, 
+                  fechaFin:data.fechaFin,
+                  plataforma:data.plataforma, 
+                  fechaMaxima:data.fechaMaxima
+                }
+                
+                console.log(proyectonuevo);
+                if(data.codigo.includes(" ") || data.nombre.includes(" ") || data.gastos.includes(" ") ||
+                  data.presupuesto.includes(" ") || data.fechaInicio.includes(" ") ||
+                  data.fechaFin.includes(" ") || data.plataforma.includes(" ") || data.fechaMaxima.includes(" "))
+                {
 
-    let prompt = this.alertCtrl.create({
-      title: 'Nuevo Usuario',
-      enableBackdropDismiss : false,
-      inputs: [
-        {
-          name: 'nombre',
-          placeholder: 'Nombre'
-        },
-        {
-          name: 'apellido',
-          placeholder: 'Apellido'
-        },
-        {
-          name: 'dni',
-          placeholder: 'DNI'
-        },
-        {
-          name: 'cod_usu',
-          placeholder: 'Cod usu'
-        },
-        {
-          name: 'departamento',
-          placeholder: 'Departamento'
-        },
-        {
-          name: 'username',
-          placeholder: 'Username'
-        },
-        {
-          name: 'password',
-          placeholder: 'Password'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Nuevo Registro',
-          handler: data => {
-            console.log('Saved clicked');
-            console.log(JSON.stringify(data));
-            var usuarionuevo = {nombre:data.nombre, apellido:data.apellido, dni:data.dni, cod_usu:data.codUsu, departamento:data.departamento,
-            					username:data.username, password:data.password}
+            console.log("ESPACIO DETECTADO");
+            let alert = this.alertCtrl.create({
+                title: 'Error',
+                message: 'No metas espacios, por favor.',
+                buttons: ['Ok']
+              });
+              alert.present(); 
+                }
+
+                else if(data.codigo == null || data.nombre == null || data.gastos == null ||
+                  data.presupuesto == null|| data.fechaInicio == null ||
+                  data.fechaFin == null || data.plataforma == null || data.fechaMaxima == null)
+                {
+                  console.log("FALTAN DATOS");
+            let alert = this.alertCtrl.create({
+                title: 'Error',
+                message: 'Rellena todos los campos, por favor.',
+                buttons: ['Ok']
+              });
+              alert.present(); 
+                }
+
+
+                else{
+                   this.afDB.list(this.opcion).push(proyectonuevo);
+                }
+              }
+            }
+          ]
+        });
+      
+        prompt.present();
+        
+      
+        break;
+      case "productos":
+       let prompt = this.alertCtrl.create({
+          title: 'Nuevo Producto',
+          enableBackdropDismiss : false,
+          inputs: [
+            {name: 'nombre',placeholder: 'Nombre'},
+            {name: 'cantidad',placeholder: 'Cantidad'},
+            {name: 'precio',placeholder: 'Precio'},
+            {name: 'codigo',placeholder: 'Codigo'},
             
-            console.log(usuarionuevo);
-            if(data.nombre.includes(" ") || data.apellido.includes(" ") ||
-            	data.dni.includes(" ") || data.cod_usu.includes(" ") ||
-            	data.departamento.includes(" ") || data.username.includes(" ") || data.password.includes(" "))
+          ],
+          buttons: [
             {
-
-				console.log("ESPACIO DETECTADO");
-				let alert = this.alertCtrl.create({
-			      title: 'Error',
-			      message: 'No metas espacios, por favor.',
-			      buttons: ['Ok']
-			    });
-			    alert.present(); 
-            }
-
-            else if(data.nombre != null && data.apellido != null &&
-            	data.dni != null && data.cod_usu != null &&
-            	data.departamento != null && data.username != null && data.password != null)
+              text: 'Cancelar',
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            },
             {
-            	console.log("FALTAN DATOS");
-				let alert = this.alertCtrl.create({
-			      title: 'Error',
-			      message: 'Rellena todos los campos, por favor.',
-			      buttons: ['Ok']
-			    });
-			    alert.present(); 
+              text: 'Nuevo Registro',
+              handler: data => {
+                console.log('Saved clicked');
+                console.log(JSON.stringify(data));
+                var productonuevo = {nombre:data.nombre, cantidad:data.cantidad, precio:data.precio, codigo:data.codigo}
+                
+                console.log(productonuevo);
+                if(data.nombre.includes(" ") || data.cantidad.includes(" ") || data.precio.includes(" ") || data.codigo.includes(" ") )
+                {
+
+            console.log("ESPACIO DETECTADO");
+            let alert = this.alertCtrl.create({
+                title: 'Error',
+                message: 'No metas espacios, por favor.',
+                buttons: ['Ok']
+              });
+              alert.present(); 
+                }
+
+                else if(data.nombre == null || data.cantidad == null || data.precio == null || data.codigo == null )
+                  
+                {
+                  console.log("FALTAN DATOS");
+            let alert = this.alertCtrl.create({
+                title: 'Error',
+                message: 'Rellena todos los campos, por favor.',
+                buttons: ['Ok']
+              });
+              alert.present(); 
+                }
+
+
+                else{
+                   this.afDB.list(this.opcion).push(productonuevo);
+                }
+              }
             }
-
-
-            else{
-            	 //this.afDB.list("/usuarios/").push(usuarionuevo);
-            }
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListadoPage');
-  }
+          ]
+        });
+      
+        prompt.present();
+        
+      
+        break;
+      default:
+        let alert = this.alertCtrl.create({
+                title: 'En Mantenimiento',
+                buttons: ['Ok']
+              });
+              alert.present(); 
+                
+        break;
+     } 
+    }
+borrar(){
+   let alert = this.alertCtrl.create({
+        title: 'borrar',
+        buttons: ['Ok']
+      });
+      alert.present(); 
 
 }
+  }//switch fin
+
