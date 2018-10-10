@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Listado Detallado</ion-title>
+    <ion-title>Listado Detallado {{opcion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content padding>
 
 <ion-list>
-    <ion-item class="text" *ngFor="let item of items | async" (click)="abrirListadoDetallado(item)">
+    <ion-item class="text" *ngFor="let item of items | async" (click)="abrirInformacion(item)">
       {{item.nombre}}
     </ion-item>
 </ion-list>
@@ -19,3 +19,4 @@
     </button>
     </div>
 </ion-content>
+

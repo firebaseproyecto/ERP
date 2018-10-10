@@ -7,17 +7,60 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>informacion</ion-title>
+    <ion-title>Informacion {{opcion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
-<ion-content padding>
-<!--ion-list>
-    <ion-item class="text" *ngFor="let item of items | async">
-      {{item.nombre}}
-      {{item.apellido}}
-    </ion-item>
-</ion-list-->
+<ion-content>
+	<div padding *ngIf="asiento">
+		<label>Codigo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.codigo}}"></ion-input>
+		<label>Referencia</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}}"></ion-input>
+	</div>
+	<div padding *ngIf="cliente">
+		<label>Nombre</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}} {{info.apellido}}"></ion-input>
+		<label>Dni</label><ion-input type="text" [disabled]="isDisabled" value="{{info.dni}}"></ion-input>
+		<label>Email</label><ion-input type="text" [disabled]="isDisabled" value="{{info.email}}"></ion-input>
+		<label>Telefono</label><ion-input type="text" [disabled]="isDisabled" value="{{info.telefono}}"></ion-input>
+	</div>
+	<div padding *ngIf="contabilidad">
+		<label>Descripcion</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}}"></ion-input>
+		<label>Asiento</label><ion-input type="text" [disabled]="isDisabled" value="{{info.asiento}}"></ion-input>
+		<label>Fecha</label><ion-input type="text" [disabled]="isDisabled" value="{{info.fecha}}"></ion-input>
+		<label>Importe</label><ion-input type="text" [disabled]="isDisabled" value="{{info.tipo}} {{info.importe}}€"></ion-input>
+	</div>
+	<div padding *ngIf="productos">
+		<label>Codigo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.codigo}}"></ion-input>
+		<label>Nombre</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}}"></ion-input>
+		<label>Stock</label><ion-input type="text" [disabled]="isDisabled" value="x{{info.cantidad}}"></ion-input>
+		<label>Precio unidad</label><ion-input type="text" [disabled]="isDisabled" value="{{info.precio}}€"></ion-input>
+	</div>
+	<div padding *ngIf="proyecto">
+		<label>Codigo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.codigo}}"></ion-input>
+		<label>Plataforma</label><ion-input type="text" [disabled]="isDisabled" value="{{info.plataforma}}"></ion-input>
+		<label>Fecha inico / Fecha fin </label><ion-input type="text" [disabled]="isDisabled" value="{{info.fechaInicio}} / {{info.fechaFin}}"></ion-input>
+		<label>Fecha de Entrega </label><ion-input type="text" [disabled]="isDisabled" value="{{info.fechaMaxima}}"></ion-input>
+		<label>Estado</label><ion-input type="text" [disabled]="isDisabled" value="{{info.estado}}"></ion-input>
+		<label>Codigo cliente</label><ion-input type="text" [disabled]="isDisabled" value="{{info.codCliente}}"></ion-input>
+		<label>Presupuesto</label><ion-input type="text" [disabled]="isDisabled" value="{{info.presupuesto}}€"></ion-input>
+		<label>Gastos</label><ion-input type="text" [disabled]="isDisabled" value="{{info.gastos}}€"></ion-input>
+	</div>
+	<div padding *ngIf="trabajadores">
+		<label>Codigo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.codigo}}"></ion-input>
+		<label>Nombre</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}}{{info.apellido}}"></ion-input>
+		<label>Dni</label><ion-input type="text" [disabled]="isDisabled" value="{{info.dni}}"></ion-input>
+		<label>Direccion</label><ion-input type="text" [disabled]="isDisabled" value="{{info.direccion}}"></ion-input>
+		<label>Telefono</label><ion-input type="text" [disabled]="isDisabled" value="{{info.telefono}}"></ion-input>
+		<label>Email</label><ion-input type="text" [disabled]="isDisabled" value="{{info.email}}"></ion-input>
+		<label>Puesto</label><ion-input type="text" [disabled]="isDisabled" value="{{info.puestp}}"></ion-input>
+		<label>Banco</label><ion-input type="text" [disabled]="isDisabled" value="{{info.banco}}"></ion-input>
+		<label>Sueldo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.sueldo}}€"></ion-input>
+	</div>
+	<div padding *ngIf="usuarios">
+		<label>Codigo</label><ion-input type="text" [disabled]="isDisabled" value="{{info.cod_usu}}"></ion-input>
+		<label>Nombre</label><ion-input type="text" [disabled]="isDisabled" value="{{info.nombre}} {{info.apellido}}"></ion-input>
+		<label>Dni</label><ion-input type="text" [disabled]="isDisabled" value="{{info.dni}}"></ion-input>
+		<label>Departamento</label><ion-input type="text" [disabled]="isDisabled" value="{{info.departamento}}"></ion-input>
+		<label>Username</label><ion-input type="text" [disabled]="isDisabled" value="{{info.username}}"></ion-input>
+		<label>Password</label><ion-input type="text" [disabled]="isDisabled" value="{{info.password}}"></ion-input>
+	</div>
 </ion-content>

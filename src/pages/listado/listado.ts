@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MenuController, AlertController } from 'ionic-angular';
 import { ListadodetalladoPage } from '../listadodetallado/listadodetallado';
+import { InformacionPage } from '../informacion/informacion';
 //FIREBASE 
 import { AngularFireDatabase } from '@angular/fire/database';
 ;//FIREBASE FIN
@@ -12,48 +13,54 @@ import { AngularFireDatabase } from '@angular/fire/database';
  * Ionic pages and navigation.
  */
  
- //
+ 
 @IonicPage()
 @Component({
   selector: 'page-listado',
   templateUrl: 'listado.html',
 })
 export class ListadoPage {
-	opcion = "";
-  boton:boolean=false;
-	
+  opcion = "";
+  pagina="";
+  opcionEspecial:boolean=false;
+
+  
   items: Observable<any[]>;
 
-	  constructor(public navCtrl: NavController, public afDB: AngularFireDatabase,
-	   public navParams: NavParams, public menu: MenuController, public alertCtrl: AlertController) {
-	  	this.opcion=navParams.get('item');
-	  	this.menu.enable(true);
-	  	this.opcion=this.opcion.toLowerCase();
-	    this.items = afDB.list(this.opcion).valueChanges();
+    constructor(public navCtrl: NavController, public afDB: AngularFireDatabase,
+     public navParams: NavParams, public menu: MenuController, public alertCtrl: AlertController) {
+      this.opcion=navParams.get('item');
+      this.menu.enable(true);
+      this.opcion=this.opcion.toLowerCase();
+      this.items = afDB.list(this.opcion).valueChanges();
       console.log("ESTOY - "+this.opcion);
       this.cambiar();
-
-	  }
+      this.pagina=this.opcion;
+    }
 cambiar(){
 if(this.opcion == "usuarios" || this.opcion == "clientes" || this.opcion == "trabajadores") {
-  this.boton=true;}
+  this.opcionEspecial=true;}
 
 }
  
 
-//######################################################################################################################
+//##################################################################################################################
 
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad ListadoPage');
-	}
-   abrirListadoDetallado(item){
+  }
+abrirListadoDetallado(item){
     console.log(item);
     console.log("DE o - "+this.opcion);
     console.log("DE i - "+item.nombre);
     this.navCtrl.push(ListadodetalladoPage,{item:item.nombre});
   }
-
+abrirInformacion(item,pagina){
+    console.log("DE o - "+this.opcion);
+    console.log("DE i - "+item.nombre+","+item.codigo);
+    this.navCtrl.push(InformacionPage,{item:item,pagina:this.pagina});
+  }
   //formularios###########################################################################################################
   doPrompt() {
   console.log("hola"+this.opcion);
@@ -287,12 +294,5 @@ switch(this.opcion){
 
   }
 }
-borrar(){
-   let alert = this.alertCtrl.create({
-                  title: 'borrar',
-                  buttons: ['Ok']
-                });
-                alert.present(); 
 
-}
 }

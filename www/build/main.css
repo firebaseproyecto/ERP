@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -25674,6 +25675,57 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-departamentos {
+  /*.card-background-page{
+    /*background-image: url('../../assets/imgs/1.jpg');*/
+  /*background-size:100% 100%; 
+    background-repeat: none;
+      }*/
+  /*.card-md{
+  	border-radius: 10px;
+  	position: relative;
+    text-align: center;
+   	background-color:transparent;
+    border:2px solid black;
+    /*background-color:transparent;*/
+  /*TAMAÑO Y POSICION*/
+  /*float:left;
+    width: 90%;
+    margin-left:5%;
+   	height: 180px;
+  }*/
+  /*p{
+ 	z-index: 10000;
+ 	color:#FFFFFF;
+	font-size:20px;
+	text-align: center;
+	margin-top:calc((180px - 20px)/2);
+ } */
+  /*ion-card:hover {background-color:grey;}*/
+}
+
+page-departamentos .card-background-page ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-departamentos .card-background-page .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: red;
+}
+
+page-departamentos .card-background-page .card-subtitle {
+  font-size: 1.0em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #fff;
+}
+
 page-home .Logo {
   margin-top: 50%;
 }
@@ -25689,6 +25741,26 @@ page-home ion-spinner * {
   fill: #222;
 }
 
+page-informacion h3 {
+  color: #2E64FE;
+}
+
+page-informacion input {
+  font-size: 19px;
+  width: 95%;
+  height: auto;
+  border: none;
+}
+
+page-listado .icontrash {
+  float: right;
+  width: 5%;
+}
+
+page-listado text {
+  width: 95%;
+}
+
 page-login .formulario {
   margin-top: 50%;
 }
@@ -25696,4 +25768,29 @@ page-login .formulario {
 page-login .boton {
   font-weight: 3em;
   text-align: center;
+}
+
+.ColorHeader {
+  background-color: #000000;
+}
+
+.CentrarHome {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 50%;
+}
+
+.ColorFondo {
+  /*background-color: #4581D1;*/
+  background-image: url(../../assets/imgs/prueba.jpg);
+  display: block;
+  margin: auto;
+}
+
+.QuitarColor {
+  opacity: 0.5;
 }

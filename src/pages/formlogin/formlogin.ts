@@ -92,8 +92,14 @@ export class FormloginPage {
                                   password: this.password,
                                   username: this.username});
 
-        console.log(this.usuario_editado);
-
+        console.log(this.usuario_editado);*/
+        this.arrData.update(this.aEditar, {apellido: this.apellido,
+                                  cod_usu: this.serDatos.usuario_actual[0].cod_usu,
+                                  departamento: this.departamento, 
+                                  dni: this.dni,
+                                  nombre: this.nombre,
+                                  password: this.password,
+                                  username: this.username});
         /*this.afDB.database.ref("usuarios/"+this.aEditar).set({ apellido: this.apellido,
                                   cod_usu: this.serDatos.usuario_actual[0].cod_usu,
                                   departamento: this.departamento, 
@@ -102,13 +108,13 @@ export class FormloginPage {
                                   password: this.password,
                                   username: this.username});*/
 
-        this.afDB.list("usuarios/"+this.aEditar).set({apellido: this.apellido,
+        /*this.afDB.list("usuarios/"+this.aEditar).set({apellido: this.apellido,
                                   cod_usu: this.serDatos.usuario_actual[0].cod_usu,
                                   departamento: this.departamento, 
                                   dni: this.dni,
                                   nombre: this.nombre,
                                   password: this.password,
-                                  username: this.username});
+                                  username: this.username});*/
         
       }
     }
